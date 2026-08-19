@@ -1,0 +1,401 @@
+:root {
+  color: #172026;
+  background: #eef2f3;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  align-items: center;
+  border: 1px solid #cdd7da;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172026;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  border-color: #3667d8;
+  box-shadow: 0 8px 20px rgba(31, 69, 122, 0.12);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #101820;
+  color: #f6fbfc;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.brand-lockup {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.brand-mark {
+  align-items: center;
+  background: #3667d8;
+  border-radius: 8px;
+  display: grid;
+  height: 44px;
+  justify-items: center;
+  width: 44px;
+}
+
+.brand-lockup h1,
+.top-band h2,
+.panel h3,
+.section-heading h3,
+.profile-card h3 {
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.brand-lockup h1 {
+  font-size: 20px;
+}
+
+.brand-lockup p,
+.profile-card p {
+  color: #aebec4;
+  margin: 4px 0 0;
+}
+
+.status-panel {
+  background: #1b2730;
+  border: 1px solid #2b3a45;
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.status-row,
+.error-row,
+.nav-stack a,
+.button-row,
+.section-heading,
+.post-meta,
+.post-meta a {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.error-row {
+  color: #ffb4a7;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+.nav-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.nav-stack a {
+  border-radius: 8px;
+  color: #dbe8eb;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+.nav-stack a:hover {
+  background: #1d2c36;
+}
+
+.workspace {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+}
+
+.top-band {
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 4px solid #1fbf92;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 156px;
+  padding: 28px;
+}
+
+.top-band h2 {
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.05;
+  max-width: 780px;
+}
+
+.primary-action {
+  background: #3667d8;
+  border-color: #3667d8;
+  color: #ffffff;
+  flex: 0 0 auto;
+}
+
+.eyebrow {
+  color: #50727d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.tool-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+}
+
+.panel,
+.content-band {
+  background: #ffffff;
+  border: 1px solid #d9e2e5;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.panel-header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.icon-button {
+  min-height: 38px;
+  padding: 0;
+  width: 38px;
+}
+
+textarea {
+  border: 1px solid #cdd7da;
+  border-radius: 8px;
+  min-height: 126px;
+  margin-top: 16px;
+  padding: 12px;
+  resize: vertical;
+  width: 100%;
+}
+
+.button-row {
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.profile-panel {
+  min-height: 230px;
+}
+
+.profile-card {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.profile-card img,
+.page-card img {
+  border-radius: 8px;
+  height: 56px;
+  object-fit: cover;
+  width: 56px;
+}
+
+.section-heading {
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.page-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.page-card {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 56px minmax(0, 1fr);
+  justify-items: start;
+  min-height: 118px;
+  padding: 14px;
+  text-align: left;
+}
+
+.page-card.selected {
+  border-color: #1fbf92;
+  box-shadow: inset 0 0 0 1px #1fbf92;
+}
+
+.page-card span {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.page-card strong,
+.page-card small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.page-card > small {
+  color: #50727d;
+  grid-column: 1 / -1;
+}
+
+.post-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.post-card {
+  border: 1px solid #d9e2e5;
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.post-card img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+}
+
+.post-card p {
+  margin: 0;
+  padding: 0 14px;
+}
+
+.post-meta {
+  color: #50727d;
+  font-size: 13px;
+  justify-content: space-between;
+  padding: 0 14px 14px;
+}
+
+.post-meta a {
+  color: #3667d8;
+  text-decoration: none;
+}
+
+.empty-state {
+  align-items: center;
+  border: 1px dashed #b8c8cd;
+  border-radius: 8px;
+  color: #50727d;
+  display: flex;
+  min-height: 128px;
+  padding: 18px;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+pre {
+  background: #101820;
+  border-radius: 8px;
+  color: #e6f2f4;
+  margin: 0;
+  max-height: 360px;
+  overflow: auto;
+  padding: 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .top-band,
+  .section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.composer-panel {
+  border: 1px solid #d9e2e5;
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.composer-input {
+  margin-top: 0;
+  min-height: 104px;
+}
+
+.link-input {
+  border: 1px solid #cdd7da;
+  border-radius: 8px;
+  min-height: 42px;
+  padding: 0 12px;
+  width: 100%;
+}
