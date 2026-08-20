@@ -36,6 +36,8 @@ export function App() {
     () => pages.find((page) => page.id === selectedPageId),
     [pages, selectedPageId]
   );
+  const selectedPageTasks = selectedPage?.tasks || [];
+  const canPublishToSelectedPage = selectedPageTasks.includes('CREATE_CONTENT') || selectedPageTasks.includes('MANAGE');
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -90,7 +92,9 @@ export function App() {
       setPostMessage('');
       setPostLink('');
       setStatus(`Published post ${result.id}`);
-      await loadPosts(selectedPage);
+      if (posts.length > 0) {
+        loadPosts(selectedPage);
+      }
     });
   }
   async function openPersonalShareDialog() {
@@ -141,8 +145,10 @@ export function App() {
       await task();
     } catch (taskError) {
       const message = taskError.message.includes('pages_read_user_content')
-        ? 'Reading page posts needs pages_read_user_content or Page Public Content Access. Keep login scopes minimal until Meta grants that permission.'
-        : taskError.message;
+        ? 'Reading page posts needs pages_read_user_content or Page Public Content Access.'
+        : taskError.message.includes('pages_manage_posts') || taskError.message.includes('permission')
+          ? 'Publishing needs pages_manage_posts and Create content access on this Page. Reconnect Facebook and approve Page publishing permissions.'
+          : taskError.message;
       setError(message);
       setStatus('Action failed');
     } finally {
@@ -266,7 +272,8 @@ export function App() {
                   <strong>{page.name}</strong>
                   <small>{page.category || 'Facebook Page'}</small>
                 </span>
-                <small>{page.fan_count ? `${page.fan_count.toLocaleString()} followers` : page.id}</small>
+<small>{page.fan_count ? `${page.fan_count.toLocaleString()} followers` : page.id}</small>
+                <small className="task-list">{page.tasks?.length ? page.tasks.join(', ') : 'No Page tasks returned'}</small>
               </button>
             ))}
             {!pages.length && <div className="empty-state wide">Load pages to see connected assets.</div>}
@@ -329,7 +336,7 @@ export function App() {
               <button
                 className="primary-action"
                 onClick={publishPost}
-                disabled={!selectedPage || loading || (!postMessage.trim() && !postLink.trim())}
+                disabled={!selectedPage || !canPublishToSelectedPage || loading || (!postMessage.trim() && !postLink.trim())}
               >
                 <Send size={18} />
                 Publish Post
@@ -373,6 +380,10 @@ export function App() {
     </main>
   );
 }
+
+
+
+
 
 
 

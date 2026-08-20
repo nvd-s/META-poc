@@ -399,3 +399,10 @@ pre {
   padding: 0 12px;
   width: 100%;
 }
+.task-list {
+  color: #6b7f87;
+  font-size: 12px;
+  grid-column: 1 / -1;
+  line-height: 1.35;
+  white-space: normal;
+}

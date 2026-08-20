@@ -97,6 +97,11 @@ app.post('/api/pages/:pageId/feed', async (req, res, next) => {
     const result = await publishPagePost(req.params.pageId, pageAccessToken, { message, link });
     res.status(201).json(result);
   } catch (error) {
+    console.error('Page publish failed', {
+      pageId: req.params.pageId,
+      message: error.message,
+      details: error.details
+    });
     next(error);
   }
 });
@@ -156,6 +161,7 @@ server.on('error', (error) => {
 
   throw error;
 });
+
 
 
 
